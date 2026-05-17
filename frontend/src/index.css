@@ -1,0 +1,21 @@
+/* Minimal global styles */
+:root {
+  --bg: #ffffff;
+  --fg: #111827;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a { color: inherit; }
+
+/* utility container */
+.container { max-width: 1000px; margin: 0 auto; padding: 16px; }
