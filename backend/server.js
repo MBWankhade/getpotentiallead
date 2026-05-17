@@ -1,6 +1,7 @@
 require('dotenv').config(); // Loads environment variables from .env
 const express = require('express');
 const connectDB = require('./config/db');
+const corsMiddleware = require('./middleware/cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 // Middleware
+app.use(corsMiddleware);
 app.use(express.json());
 
 // Sample Route
