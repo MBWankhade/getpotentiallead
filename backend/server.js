@@ -16,6 +16,15 @@ app.get('/', (req, res) => {
   res.send('API is running and database is connected!');
 });
 
+// API route used by the frontend
+app.get('/api/health', (req, res) => {
+  res.json({
+    ok: true,
+    message: 'Backend is connected',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
