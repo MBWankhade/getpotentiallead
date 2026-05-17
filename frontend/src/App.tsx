@@ -27,7 +27,8 @@ export default function App(_props: AppProps) {
   return (
     <div className="app-root">
       <header>
-        <h1>GetPotentialLead</h1>
+        <img src="/logo.png" alt="Get Potential Lffead logo" className="brand-logo" />
+        <h1>Get Potential Lead</h1>
       </header>
       <main>
         <p>{status}</p>
