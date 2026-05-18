@@ -1,24 +1,46 @@
-/* Minimal app styles - valid CSS only */
 :root {
-  --bg: #ffffff;
-  --fg: #111827;
+  --bg: #f6f4ef;
+  --panel: #ffffff;
+  --text: #1d252d;
+  --muted: #5f6b76;
+  --line: #d3d9df;
+  --accent: #007a5c;
 }
 
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--fg);
+  background: radial-gradient(circle at top right, #fff2d8, transparent 45%), var(--bg);
+  color: var(--text);
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
 }
 
 .app-root {
-  width: 100%;
-  max-width: 1000px;
-  margin: 32px auto;
-  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
-header h1 { margin: 0 0 12px 0; font-size: 28px; }
-main p { margin: 0; color: #374151; }
+h1, h2, h3 { margin: 0 0 10px; }
 
-.counter { display: inline-block; padding: 6px 10px; border-radius: 6px; }
+.stats-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 16px;
+}
+
+.card, .stats-grid article {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+input, select, textarea, button { border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: inherit; }
+textarea { min-height: 80px; }
+button { background: var(--accent); color: white; border: none; cursor: pointer; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid var(--line); padding: 8px; text-align: left; }
+.row { display: flex; gap: 8px; align-items: center; }
