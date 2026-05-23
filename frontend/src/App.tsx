@@ -131,8 +131,6 @@ export default function App() {
 
   const [sendAudience, setSendAudience] = useState<SendAudience>('selected')
   const [messageText, setMessageText] = useState('')
-  const [contentSid, setContentSid] = useState('')
-  const [contentVariablesText, setContentVariablesText] = useState('')
 
   const [isFollowUpDialogOpen, setIsFollowUpDialogOpen] = useState(false)
   const [followUpDate, setFollowUpDate] = useState('')
@@ -271,8 +269,6 @@ export default function App() {
     mutationFn: sendBulkMessage,
     onSuccess: (data) => {
       setMessageText('')
-      setContentSid('')
-      setContentVariablesText('')
 
       if (data.failedCount > 0) {
         setToast({
@@ -418,27 +414,15 @@ export default function App() {
       return
     }
 
-    if (!messageText.trim() && !contentSid.trim()) {
-      setToast({ open: true, message: 'Enter message or Content SID', severity: 'error' })
+    if (!messageText.trim()) {
+      setToast({ open: true, message: 'Enter a message', severity: 'error' })
       return
-    }
-
-    let contentVariables: Record<string, string> | undefined
-    if (contentVariablesText.trim()) {
-      try {
-        contentVariables = JSON.parse(contentVariablesText)
-      } catch (_error) {
-        setToast({ open: true, message: 'Content variables must be valid JSON', severity: 'error' })
-        return
-      }
     }
 
     bulkMessageMutation.mutate({
       mode: 'selected',
       clientIds: targetIds,
-      message: messageText.trim() ? messageText.trim() : undefined,
-      contentSid: contentSid.trim() ? contentSid.trim() : undefined,
-      contentVariables,
+      message: messageText.trim(),
     })
   }
 
@@ -1148,27 +1132,6 @@ export default function App() {
                 placeholder="Type your message here for user-initiated conversation..."
                 value={messageText}
                 onChange={(event) => setMessageText(event.target.value)}
-                helperText="Leave empty if using Twilio Content SID"
-              />
-
-              <TextField
-                fullWidth
-                label="Twilio Content SID (optional)"
-                placeholder="HXxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                value={contentSid}
-                onChange={(event) => setContentSid(event.target.value)}
-                helperText="For template-based sending, leave message empty"
-              />
-
-              <TextField
-                fullWidth
-                multiline
-                minRows={2}
-                label="Content Variables JSON (optional)"
-                placeholder='{"1":"12/1","2":"3pm"}'
-                value={contentVariablesText}
-                onChange={(event) => setContentVariablesText(event.target.value)}
-                helperText="Only used with Content SID"
               />
 
               <Stack direction="row" spacing={1.5} sx={{ justifyContent: 'flex-end', pt: 1 }}>
@@ -1240,13 +1203,10 @@ export default function App() {
               </Typography>
               <Stack spacing={1}>
                 <Typography variant="body2" color="text.secondary">
-                  <strong>Message:</strong> For session-based conversations
+                  <strong>Message:</strong> Send personalized messages to your audience
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <strong>Content SID:</strong> For pre-built templates
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  <strong>Variables:</strong> Personalize templates with JSON
+                  Select specific clients or use filtered results to target your audience
                 </Typography>
               </Stack>
             </CardContent>
