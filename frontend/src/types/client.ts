@@ -5,10 +5,16 @@ export type Client = {
   name: string
   phone: string
   email?: string
+  city?: string
+  customerStatus?: 'Interested' | 'Converted' | 'Inactive'
+  followUpStatus?: 'Pending' | 'Completed'
   tags?: string[]
   notes?: string
+  lastFollowUpDate?: string
+  nextFollowUpDate?: string
   followUpDate?: string
   birthday?: string
+  weddingAnniversary?: string
   anniversary?: string
   paymentDueAmount?: number
   paymentDueDate?: string

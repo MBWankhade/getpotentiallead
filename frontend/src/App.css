@@ -1,46 +1,36 @@
-:root {
-  --bg: #f6f4ef;
-  --panel: #ffffff;
-  --text: #1d252d;
-  --muted: #5f6b76;
-  --line: #d3d9df;
-  --accent: #007a5c;
-}
+/* App styles - Material UI handles most styling */
 
 body {
-  background: radial-gradient(circle at top right, #fff2d8, transparent 45%), var(--bg);
-  color: var(--text);
-  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.app-root {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px;
+html,
+body,
+#root {
+  height: 100%;
 }
 
-h1, h2, h3 { margin: 0 0 10px; }
-
-.stats-grid {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  margin-bottom: 16px;
+/* Default scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.card, .stats-grid article {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 14px;
-  margin-bottom: 16px;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
-input, select, textarea, button { border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: inherit; }
-textarea { min-height: 80px; }
-button { background: var(--accent); color: white; border: none; cursor: pointer; }
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
+}
 
-table { width: 100%; border-collapse: collapse; }
-th, td { border-bottom: 1px solid var(--line); padding: 8px; text-align: left; }
-.row { display: flex; gap: 8px; align-items: center; }
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
